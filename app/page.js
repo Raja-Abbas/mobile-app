@@ -8,7 +8,7 @@ import { NextUIProvider } from "@nextui-org/system";
 // Add custom styles to your component
 const styles = `
   ::-webkit-scrollbar {
-    width: 5px;
+    width: 8px;
   }
 
   ::-webkit-scrollbar-track {
@@ -29,7 +29,7 @@ function page() {
   return (
     <NextUIProvider>
       <style jsx>{styles}</style>
-      <div>
+      <div className='font-sans'>
         <Navbar />
         <Data />
       </div>

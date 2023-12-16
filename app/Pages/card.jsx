@@ -51,7 +51,7 @@ export default function App({ addToCartCallback }) {
             key={product.id}
             className='max-w-md sm:flex-col inline-flex hover:bg-gray-500 hover:text-white hover:scale-105 transition-all cursor-pointer ease-in-out items-start rounded-xl shadow-2xl bg-gray-900'
           >
-            <CardBody className="overflow-hidden flex justify-end">
+            <CardBody className="overflow-hidden flex justify-start items-start">
               <Image
                 isBlurred
                 alt={product.title}
@@ -59,17 +59,17 @@ export default function App({ addToCartCallback }) {
                 src={product.thumbnail}
               />
             </CardBody>
-            <CardHeader className="pb-0 pt-8 px-4 text-3xl bg-opacity-75 flex-col gap-8 items-start">
-              <p className="text-white text-3xl uppercase font-bold bg-gray-700 px-2 rounded-lg text-start">
+            <CardHeader className="pb-0 pt-8 px-4 text-xl bg-opacity-75 flex-col gap-8 items-start">
+              <p className="text-white text-xl uppercase font-bold bg-gray-700 px-2 rounded-lg text-start">
                 {product.category}
               </p>
-              <small className="text-white text-default-500 text-3xl bg-green-700 px-2 rounded-lg text-start">
+              <small className="text-white text-default-500 text-xl bg-green-700 px-2 rounded-lg text-start">
                 {product.title}
               </small>
               <small className="text-white flex justify-end text-default-500 text-5xl px-2 rounded-lg text-right">
                 ${product.price}
               </small>
-              <p className="text-white text-default-500 text-3xl bg-green-700 px-2 rounded-lg text-start">
+              <p className="text-white text-default-500 text-xl bg-green-700 px-2 rounded-lg text-start">
                 Brand: <span className="">{product.brand}</span>
               </p>
               <h4 className="font-bold text-2xl text-justify mb-24 text-white">

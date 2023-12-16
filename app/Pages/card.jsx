@@ -49,13 +49,13 @@ export default function App({ addToCartCallback }) {
         {filteredProducts.map((product) => (
           <Card
             key={product.id}
-            className='max-w-md sm:flex-col inline-flex hover:bg-gray-500 hover:text-white hover:scale-105 transition-all cursor-pointer ease-in-out items-start rounded-xl shadow-2xl bg-gray-900'
+            className='max-w-sm sm:flex-col inline-flex hover:bg-gray-500 hover:text-white hover:scale-105 transition-all cursor-pointer ease-in-out items-start rounded-xl shadow-2xl bg-gray-900'
           >
             <CardBody className="overflow-hidden flex justify-start items-start">
               <Image
                 isBlurred
                 alt={product.title}
-                className="object-fit h-[500px]"
+                className="object-fit h-[350px]"
                 src={product.thumbnail}
               />
             </CardBody>
@@ -77,7 +77,7 @@ export default function App({ addToCartCallback }) {
               </h4>
               <button
                 onClick={() => addToCart(product)}
-                className="absolute w-[95%] h-[] mt-8 bottom-[10px] hover:bg-[#E4FF3A] hover:text-black transition-all font-bold bg-sky-600 text-white shadow-2xl px-4 py-2 items-center w-100 flex justify-center uppercase"
+                className="absolute w-[92%] h-[] mt-8 bottom-[10px] hover:bg-[#E4FF3A] hover:text-black transition-all font-bold bg-sky-600 text-white shadow-2xl px-4 py-2 items-center w-100 flex justify-center uppercase"
               >
                 {cartItems.some((item) => item.id === product.id)
                   ? "Remove from Cart"

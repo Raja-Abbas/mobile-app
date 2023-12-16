@@ -103,7 +103,7 @@ export default function App({ addToCartCallback }) {
                 {product.category}
               </p>
               <div className="flex w-full -mt-2 items-center justify-between">
-              <small className="text-lg px-2 rounded-lg text-center">
+              <small className="text-lg px-2 rounded-lg text-center ">
                 {product.title}
               </small>
               <small className="text-xl inline-flex bg-sky-600 px-2 text-white rounded-lg text-center">

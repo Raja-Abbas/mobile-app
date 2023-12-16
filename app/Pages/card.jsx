@@ -34,7 +34,11 @@ export default function App({ addToCartCallback }) {
     }
   };
 
-  // Filter items with the category of "smartphones" and limit to 14 items
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
+  };
+
+  // Filter items with the selected category and limit to 14 items
   const filter = (product) =>
     (selectedCategory.toLowerCase() === "all" ||
       product.category.toLowerCase() === selectedCategory.toLowerCase()) &&
@@ -46,10 +50,32 @@ export default function App({ addToCartCallback }) {
   return (
     <div className='flex max-lg:flex-col lg:flex-row gap-6 z-10 w-[100%]'>
       <div className="flex max-lg:hidden flex-col flex-wrap mt-28 justify-start lg:px-5 xl:px-10 items-start gap-12 lg:w-[20%] xl:w-[14%]">
-        <p className="text-3xl">Sizes:</p>
+        <p className="text-3xl">Category:</p>
         <div className="flex gap-6 flex-col">
-          <p className="px-3 py-1 bg-gray-300 hover:bg-gray-500 text-2xl rounded-lg cursor-pointer">Laptops</p>
-          <p className="px-3 py-1 bg-gray-300 hover:bg-gray-500 text-2xl rounded-lg cursor-pointer">Smartphones</p>
+          <p
+            className={`px-3 py-1 bg-gray-300 hover:bg-gray-500 text-2xl rounded-lg cursor-pointer ${
+              selectedCategory === "laptops" && "bg-gray-500"
+            }`}
+            onClick={() => handleCategoryClick("all")}
+          >
+            All
+          </p>
+          <p
+            className={`px-3 py-1 bg-gray-300 hover:bg-gray-500 text-2xl rounded-lg cursor-pointer ${
+              selectedCategory === "laptops" && "bg-gray-500"
+            }`}
+            onClick={() => handleCategoryClick("laptops")}
+          >
+            Laptops
+          </p>
+          <p
+            className={`px-3 py-1 bg-gray-300 hover:bg-gray-500 text-2xl rounded-lg cursor-pointer ${
+              selectedCategory === "smartphones" && "bg-gray-500"
+            }`}
+            onClick={() => handleCategoryClick("smartphones")}
+          >
+            Smartphones
+          </p>
         </div>
       </div>
       <div className='flex flex-wrap mt-28 justify-center items-start gap-10 w-[100%]'>

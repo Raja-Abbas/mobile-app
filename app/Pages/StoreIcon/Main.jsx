@@ -24,7 +24,6 @@ export default function Main() {
   const addToCart = (product) => {
     setCartItems([...cartItems, product]);
   };
-
   return (
     <div className="flex items-center gap-4 transition-all ease-in-out cursor-pointer text-white relative">
       <div className="flex items-center px-2 py-2" onClick={toggleSidebar}>

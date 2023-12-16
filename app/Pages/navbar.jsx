@@ -16,7 +16,7 @@ export default function App() {
 
 
   return (
-    <Navbar isMenuDefaultOpen motionProps isBordered shouldShowOnScroll className="h-[100px] text-[30px] text-sky-800 border-b border-gray-400">
+    <Navbar isMenuDefaultOpen motionProps isBordered shouldShowOnScroll className="h-[100px] text-[30px] text-sky-800 border-b border-gray-300">
       <NavbarBrand className="">
         <Image src={Logo} alt="" />
       </NavbarBrand>

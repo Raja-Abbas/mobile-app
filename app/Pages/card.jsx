@@ -49,12 +49,13 @@ export default function App({ addToCartCallback }) {
 
   return (
     <div className='flex max-lg:flex-col lg:flex-row gap-6 z-10 w-[100%]'>
-      <div className="flex max-lg:hidden flex-col flex-wrap mt-28 justify-start lg:px-5 xl:px-10 items-start gap-12 lg:w-[20%] xl:w-[14%]">
+      <div className="flex shadow-2xl border-r border-gray-300 bg-transparent max-lg:hidden flex-col flex-wrap pt-20 justify-start lg:px-5 xl:px-10 items-start gap-12 lg:w-[300px]">
+        <div className="fixed">
         <p className="text-3xl">Category:</p>
-        <div className="flex gap-6 flex-col">
+        <div className="flex gap-6 flex-col mt-10">
           <p
             className={`px-3 py-1 bg-gray-300 hover:bg-gray-500 text-2xl rounded-lg cursor-pointer ${
-              selectedCategory === "laptops" && "bg-gray-500"
+              selectedCategory === "all" && "bg-gray-500"
             }`}
             onClick={() => handleCategoryClick("all")}
           >
@@ -78,21 +79,22 @@ export default function App({ addToCartCallback }) {
           </p>
         </div>
       </div>
-      <div className='flex flex-wrap mt-28 justify-center items-start gap-10 w-[100%]'>
+      </div>
+      <div className='flex flex-wrap mt-20 justify-center items-start gap-10 w-[100%]'>
         {filteredProducts.map((product) => (
           <Card
             key={product.id}
-            className='max-w-sm max-h-[650px] hover:w-[100%] sm:flex-col hover:justify-center inline-flex hover:bg-gray-200 text-center hover:scale-[1.04] transition-all cursor-pointer ease-in-out items-start rounded-xl shadow-2xl bg-transparent'
+            className='lg:max-w-xs max-h-[650px] hover:w-[100%] sm:flex-col hover:justify-center inline-flex hover:bg-gray-200 text-center hover:scale-[1.04] transition-all cursor-pointer ease-in-out items-start rounded-xl shadow-2xl bg-transparent'
           >
             <CardBody className="z-0 p-0 relative overflow-hidden flex justify-start items-start">
               <div className="flex justify-between w-full px-3 absolute top-5 z-50">
-              <p className="bg-gray-400 px-2 py-1 rounded-lg text-white">Discount: {product.discountPercentage}%</p>
-              <p className="bg-[#e35225] px-2 py-1 rounded-lg text-white">Rate: {product.rating}</p>
+              <p className="bg-gray-400 px-2 py-1 shadow-inner rounded-lg text-white">Discount: {product.discountPercentage}%</p>
+              <p className="bg-[#e35225] px-2 py-1 shadow-inner rounded-lg text-white">Rate: {product.rating}</p>
               </div>
               <Image
                 isBlurred
                 alt={product.title}
-                className="object-fit h-[350px] w-[100%] p-0 m-0 rounded-none flex justify-center"
+                className="object-fit h-[350px] w-[100%] p-0 m-0 rounded-none hover:opacity-50 flex justify-center transition-all"
                 src={product.thumbnail}
               />
             </CardBody>
@@ -100,11 +102,11 @@ export default function App({ addToCartCallback }) {
               <p className="w-full text-xl uppercase font-bold px-2 py-2 rounded-lg text-center">
                 {product.category}
               </p>
-              <div className="flex w-full gap-10 -mt-2 items-center justify-center">
-              <small className="text-xl px-2 rounded-lg text-center">
+              <div className="flex w-full -mt-2 items-center justify-between">
+              <small className="text-lg px-2 rounded-lg text-center">
                 {product.title}
               </small>
-              <small className="text-2xl inline-flex bg-orange-700 px-2 text-white rounded-lg text-center">
+              <small className="text-xl inline-flex bg-sky-600 px-2 text-white rounded-lg text-center">
                 ${product.price}
               </small>
               </div>
@@ -116,7 +118,7 @@ export default function App({ addToCartCallback }) {
               </h4>
               <button
                 onClick={() => addToCart(product)}
-                className="absolute w-[92%] h-[] mt-8 bottom-[10px] text-white hover:bg-sky-800 transition-all font-bold bg-sky-600 shadow-2xl px-4 py-2 items-center w-100 flex justify-center uppercase"
+                className="absolute w-[92%] h-[] mt-8 bottom-[10px] shadow-inner text-white hover:bg-sky-800 transition-all font-bold bg-sky-600 px-4 py-2 items-center w-100 flex justify-center uppercase"
               >
                 {cartItems.some((item) => item.id === product.id)
                   ? "Remove from Cart"

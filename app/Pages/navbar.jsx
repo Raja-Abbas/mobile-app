@@ -1,26 +1,74 @@
 // navbar.jsx
 "use client";
-import React, { useState } from 'react';
-import Github from '../../public/github-mark.svg';
-import Image from 'next/image';
-import StoreIcon from './StoreIcon/Main';
+import React,{useState} from "react";
+import Image from "next/image"
+import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button} from "@nextui-org/react";
+import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem} from "@nextui-org/react";
+import Logo from "../../public/Vector.svg";
+import StoreIcon from './StoreIcon/Main'
 
-function Navbar({  }) {
-  
+export default function App() {
+  const [selectedCategory, setSelectedCategory] = useState("all");
+
+  const handleFilterChange = (key) => {
+    setSelectedCategory(key);
+  };
+
 
   return (
-    <div className='bg-white shadow-xl h-[120px] sticky top-0 z-20'>
-      <div className='flex justify-between pe-10 items-center'>
-        <div className='flex gap-0'>
-          <div className='bg-black max-sm:hidden inline-flex pl-[140px] pt-[30px] shadow-2xl border border-gray-700 pr-[100px] -rotate-45 -ml-36'>
-            <Image src={Github} alt='' />
-          </div>
-          <h1 className='flex max-sm:ml-4 items-center text-[50px] font-bold text-[#1e293b] uppercase'>Mobile Store</h1>
-        </div>
+    <Navbar isMenuDefaultOpen motionProps isBordered shouldShowOnScroll className="h-[100px] text-[30px] text-sky-800 border-b border-gray-400">
+      <NavbarBrand className="">
+        <Image src={Logo} alt="" />
+      </NavbarBrand>
+      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+        <NavbarItem isActive>
+          <Link color="foreground" href="#">
+            Features
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link href="#" color="foreground" aria-current="page">
+            Customers
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Dropdown>
+      <DropdownTrigger className="">
+        <Button 
+          variant="bordered" 
+        >
+          Open Menu
+        </Button>
+      </DropdownTrigger>
+      <DropdownMenu
+      aria-label="Action event example"
+      onAction={(key) => handleFilterChange(key)}
+      className="bg-black text-white rounded-md"
+    >
+      <DropdownItem key="all">ALL</DropdownItem>
+      <DropdownItem key="laptops">LAPTOPS</DropdownItem>
+      <DropdownItem key="smartphones">SMARTPHONES</DropdownItem>
+    </DropdownMenu>
+    </Dropdown>
+        </NavbarItem>
+        <NavbarItem>
+          <Link color="foreground" href="#">
+            Integrations
+          </Link>
+        </NavbarItem>
+      </NavbarContent>
+      <NavbarContent justify="end" className=" flex justify-end">
+        <NavbarItem className="hidden lg:flex">
+          <Link href="#">Login</Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Button as={Link} color="warning" href="#" variant="flat">
+            Sign Up
+          </Button>
+        </NavbarItem>
         <StoreIcon />
-      </div>
-    </div>
+      </NavbarContent>
+    </Navbar>
   );
 }
 
-export default Navbar;

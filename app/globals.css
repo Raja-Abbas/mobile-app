@@ -17,7 +17,9 @@
 }
 
 body {
-  background-color: #cbd5e1;
+  background-color: #2d2d2d;
+  height: 100% !important;
+  width: 100%;
 }
 
 

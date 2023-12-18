@@ -16,7 +16,7 @@ const styles = `
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: #d1d5db;
+    background-color: #0284c7;
     border-radius: 0;
   }
 
@@ -31,7 +31,7 @@ function Page() {
   useEffect(() => {
     const loadingTimer = setTimeout(() => {
       setIsLoading(false);
-    }, 5000);
+    }, 2000);
 
     return () => clearTimeout(loadingTimer);
   }, []);

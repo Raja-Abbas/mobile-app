@@ -54,11 +54,11 @@ export default function App({ addToCartCallback }) {
 
 
   return (
-    <div className="flex max-lg:flex-col lg:flex-row gap-6 z-10 w-[100%]">
+    <div className="flex max-lg:flex-col lg:flex-row gap-6 z-10 w-[100%] bg-gray-200">
       <div className="flex shadow-2xl border-r border-gray-300 bg-transparent max-lg:hidden flex-col flex-wrap pt-20 justify-start px-5 items-start gap-12 lg:w-[300px]">
-        <div className="fixed">
+        <div className="fixed overflow-x-scroll">
           <p className="text-3xl">Category:</p>
-          <div className="flex gap-6 flex-col mt-10">
+          <div className="flex gap-4 flex-col mt-10">
             <p
               className={`px-3 py-1 bg-gray-300 hover:bg-gray-500 text-2xl rounded-lg cursor-pointer transition-all duration-300 ${
                 selectedCategory === "all" && "bg-gray-500 text-white"

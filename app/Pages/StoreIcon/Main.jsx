@@ -33,7 +33,7 @@ export default function Main() {
       </div>
 
       {isSidebarVisible && (
-        <div className="fixed pt-16 px-5 top-0 bottom-0 right-0 z-50 transition-all ease-in-out w-[30%] h-[100vh] bg-[#2d2d2d] shadow-2xl transform">
+        <div className="fixed pt-16 px-5 top-0 bottom-0 right-0 z-50 animate-bounces transition-all ease-in-out w-[30%] h-[100vh] bg-gray-300 shadow-2xl transform">
           <button
             className="absolute text-[40px] top-2 right-2 text-white cursor-pointer"
             onClick={closeSidebar}

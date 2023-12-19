@@ -1,23 +1,24 @@
 // Main.jsx
-"use client";
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import { Badge } from "@nextui-org/badge";
 import { CartIcon } from "./CartIcon";
 import Image from "next/image";
-export default function Main() {
+import { addToCart } from "./cartActions"; // Adjust the path based on your project structure
+
+const Main = ({ addToCart, cartItems }) => {
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
-  const [cartItems, setCartItems] = useState([]);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-   fetch("https://dummyjson.com/products")
+    fetch("https://dummyjson.com/products")
       .then((response) => response.json())
       .then((data) => {
-        // Assuming the array is inside a property named 'products'
         const productsArray = data.products || [];
         setProducts(productsArray);
       })
       .catch((error) => console.error("Error fetching data:", error));
-  },  [cartItems]);
+  }, []);
 
   const toggleSidebar = () => {
     setIsSidebarVisible(!isSidebarVisible);
@@ -27,9 +28,10 @@ export default function Main() {
     setIsSidebarVisible(false);
   };
 
-  const addToCart = (product) => {
-    setCartItems([...cartItems, product]);
-  };
+  const handleAddToCart = (product) => {
+  addToCart(product);
+  console.log("Cart Items:", cartItems); // Log cart details to console
+};
 
   return (
     <div className="flex items-center gap-4 transition-all ease-in-out cursor-pointer text-white relative">
@@ -49,17 +51,19 @@ export default function Main() {
           <div>
             <p className="text-3xl">Sidebar Content</p>
             <ul>
-              {cartItems.map((product, index) => (
+              {cartItems.map((cartProduct, index) => (
                 <li key={index}>
                   <div className="flex items-center z-50">
                     <Image
-                      src={product.thumbnail}
-                      alt={product.title}
+                      src={cartProduct.thumbnail}
+                      alt={cartProduct.title}
+                      width={100}
+                      height={100}
                       className="h-8 w-8 object-cover mr-2"
                     />
                     <div>
-                      <p>{product.title}</p>
-                      <p>${product.price}</p>
+                      <p>{cartProduct.title}</p>
+                      <p>${cartProduct.price}</p>
                     </div>
                   </div>
                 </li>
@@ -70,4 +74,16 @@ export default function Main() {
       )}
     </div>
   );
-}
+};
+
+const mapStateToProps = (state) => ({
+  cartItems: state.cart.cartItems,
+});
+
+const mapDispatchToProps = {
+  addToCart,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
+
+

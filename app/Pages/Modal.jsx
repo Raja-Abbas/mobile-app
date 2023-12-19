@@ -3,8 +3,15 @@ import React from "react";
 import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
 
 
-const Modal = ({ isOpen, closeModal, product }) => {
+const Modal = ({ isOpen, closeModal, product, addToCartCallback }) => {
   if (!isOpen) return null;
+
+
+  const addToCart = () => {
+  addToCartCallback(product);
+  closeModal(); // Close the modal after adding to the cart
+};
+
 
   return (
     <div className="fixed top-1/2 bg-white rounded-lg shadow-3xl  left-1/2 transform z-50 animate-drip-expand -translate-x-1/2 -translate-y-1/2 h-fit w-fit flex max-lg:flex-col items-center px-6">
@@ -26,10 +33,13 @@ const Modal = ({ isOpen, closeModal, product }) => {
               </p>
               <h4 className="font-semibold flex items-center text-sm text-center mb-6 w-full">
                 {product.description}
-              </h4>            
+              </h4>    
+              <div className="flex gap-6 w-full">
+              <button onClick={addToCart} className="text-white w-[100px] transition-all rounded-lg border-none hover:opacity-70 bg-green-700 h-[40px] flex justify-center items-center">Add to cart</button>        
         <button onClick={closeModal} className="text-blue-500 w-[100px] transition-all rounded-lg border-none hover:bg-gray-800 bg-black h-[40px] flex justify-center items-center">
           Close
         </button>
+        </div>
       </div>
       <Image
                 isBlurred

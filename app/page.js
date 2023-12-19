@@ -30,7 +30,7 @@ const styles = `
 
 const store = createStore(rootReducer);
 
-function Page({ Component, pageProps }) {
+function Page() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {

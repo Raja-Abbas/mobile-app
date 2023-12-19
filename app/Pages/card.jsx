@@ -122,7 +122,7 @@ export default function App({ addToCartCallback }) {
         {filteredProducts.map((product) => (
           <Card
             key={product.id}
-            className="max-lg:max-w-sm lg:max-w-[300px] max-h-[620px] hover:w-[100%] sm:flex-col hover:justify-center inline-flex hover:bg-gray-200 text-center hover:scale-[1.02] transition-all cursor-pointer ease-in-out items-start rounded-xl shadow-2xl bg-transparent"
+            className="max-lg:max-w-sm lg:max-w-[270px] max-h-[620px] hover:w-[100%] sm:flex-col hover:justify-center inline-flex hover:bg-gray-200 text-center hover:scale-[1.02] transition-all cursor-pointer ease-in-out items-start rounded-xl shadow-2xl bg-transparent"
           >
             <CardBody className="z-0 p-0 relative overflow-hidden flex justify-start items-start">
               <div className="flex justify-between w-full px-3 absolute top-5 z-50">
@@ -136,16 +136,16 @@ export default function App({ addToCartCallback }) {
               <Image
                 isBlurred
                 alt={product.title}
-                className="bg-cover h-[250px] w-[100%] p-0 m-0 rounded-none hover:opacity-50 flex justify-center transition-all"
+                className="object-fit h-[200px] w-[270px] p-0 m-0 rounded-none hover:opacity-50 flex justify-center transition-all"
                 src={product.thumbnail}
               />
             </CardBody>
-            <CardHeader className="pb-0 pt-8 px-4 text-lg bg-opacity-75 justify-center bg-white flex-col rounded-none gap-2 items-start">
+            <CardHeader className="pb-0 pt-8 px-4 h-[300px] text-lg bg-opacity-75 justify-center bg-white flex-col rounded-none gap-2 items-start">
               <p className="w-full text-xl uppercase font-bold px-2 py-2 rounded-lg text-center">
                 {product.category}
               </p>
               <div className="flex w-full -mt-2 items-center justify-between">
-                <small className="text-md px-2 rounded-lg text-center ">
+                <small className="text-md px-2 uppercase rounded-lg text-center ">
                   {product.title}
                 </small>
                 <small className="text-lg inline-flex bg-sky-600 px-2 text-white rounded-lg text-center">
@@ -155,7 +155,7 @@ export default function App({ addToCartCallback }) {
               <p className="text-lg px-2 rounded-lg text-center w-full">
                 Brand: <span className="">{product.brand}</span>
               </p>
-              <h4 className="font-semibold h-[50px] flex items-center text-sm text-center mb-24 w-full">
+              <h4 className="font-semibold h-[80px] flex items-center text-sm text-center mb-24 w-full">
                 {product.description}
               </h4>
               <button

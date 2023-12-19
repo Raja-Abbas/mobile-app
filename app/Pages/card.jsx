@@ -57,10 +57,10 @@ export default function App({ addToCartCallback }) {
     <div className="flex max-xl:flex-col xl:flex-row gap-6 z-10 w-[100%] bg-gray-200">
       <div className="flex shadow-2xl border-r border-gray-300 bg-transparent max-lg:hidden flex-col flex-wrap pt-20 justify-start px-5 items-start gap-4 lg:w-[100%] xl:w-[300px]">
         <div className="xl:fixed overflow-x-scroll">
-          <p className="text-2xl">Category:</p>
+          <p className="text-2xl text-orange-500 uppercase">Category:</p>
           <div className="flex gap-4 lg:flex-wrap xl:flex-col mt-10">
             <p
-              className={`px-3 py-1 bg-gray-300 hover:bg-gray-500 text-lg rounded-lg cursor-pointer transition-all duration-300 ${
+              className={`px-3 py-1 bg-gray-300 hover:bg-gray-500 uppercase text-lg rounded-lg cursor-pointer transition-all duration-300 ${
                 selectedCategory === "all" && "bg-gray-500 text-white"
               }`}
               onClick={() => handleCategoryClick("all")}
@@ -68,7 +68,7 @@ export default function App({ addToCartCallback }) {
               All
             </p>
             <p
-              className={`px-3 py-1 bg-gray-300 hover:bg-gray-500 text-lg rounded-lg cursor-pointer transition-all duration-300 ${
+              className={`px-3 py-1 bg-gray-300 hover:bg-gray-500 uppercase text-lg rounded-lg cursor-pointer transition-all duration-300 ${
                 selectedCategory === "laptops" && "bg-gray-500 text-white"
               }`}
               onClick={() => handleCategoryClick("laptops")}
@@ -76,7 +76,7 @@ export default function App({ addToCartCallback }) {
               Laptops
             </p>
             <p
-              className={`px-3 py-1 bg-gray-300 hover:bg-gray-500 text-lg rounded-lg cursor-pointer transition-all duration-300 ${
+              className={`px-3 py-1 bg-gray-300 hover:bg-gray-500 uppercase text-lg rounded-lg cursor-pointer transition-all duration-300 ${
                 selectedCategory === "smartphones" && "bg-gray-500  text-white"
               }`}
               onClick={() => handleCategoryClick("smartphones")}
@@ -84,7 +84,7 @@ export default function App({ addToCartCallback }) {
               Smartphones
             </p>
             <p
-              className={`px-3 py-1 bg-gray-300 hover:bg-gray-500 text-lg rounded-lg cursor-pointer transition-all duration-300 ${
+              className={`px-3 py-1 bg-gray-300 hover:bg-gray-500 uppercase text-lg rounded-lg cursor-pointer transition-all duration-300 ${
                 selectedCategory === "fragrances" && "bg-gray-500 text-white"
               }`}
               onClick={() => handleCategoryClick("fragrances")}
@@ -92,7 +92,7 @@ export default function App({ addToCartCallback }) {
               Fragrances
             </p>
             <p
-              className={`px-3 py-1 bg-gray-300 hover:bg-gray-500 text-lg rounded-lg cursor-pointer transition-all duration-300 ${
+              className={`px-3 py-1 bg-gray-300 hover:bg-gray-500 uppercase text-lg rounded-lg cursor-pointer transition-all duration-300 ${
                 selectedCategory === "skincare" && "bg-gray-500 text-white"
               }`}
               onClick={() => handleCategoryClick("skincare")}
@@ -100,7 +100,7 @@ export default function App({ addToCartCallback }) {
               Skincare
             </p>
             <p
-              className={`px-3 py-1 bg-gray-300 hover:bg-gray-500 text-lg rounded-lg cursor-pointer transition-all duration-300 ${
+              className={`px-3 py-1 bg-gray-300 hover:bg-gray-500 uppercase text-lg rounded-lg cursor-pointer transition-all duration-300 ${
                 selectedCategory === "groceries" && "bg-gray-500 text-white"
               }`}
               onClick={() => handleCategoryClick("groceries")}
@@ -108,7 +108,7 @@ export default function App({ addToCartCallback }) {
               Groceries
             </p>
             <p
-              className={`px-3 py-1 bg-gray-300 hover:bg-gray-500 text-lg rounded-lg cursor-pointer transition-all duration-300 ${
+              className={`px-3 py-1 bg-gray-300 hover:bg-gray-500 uppercase text-lg rounded-lg cursor-pointer transition-all duration-300 ${
                 selectedCategory === "home-decoration" && "bg-gray-500 text-white"
               }`}
               onClick={() => handleCategoryClick("home-decoration")}
@@ -122,7 +122,7 @@ export default function App({ addToCartCallback }) {
         {filteredProducts.map((product) => (
           <Card
             key={product.id}
-            className="max-lg:max-w-sm lg:max-w-xs max-h-[620px] hover:w-[100%] sm:flex-col hover:justify-center inline-flex hover:bg-gray-200 text-center hover:scale-[1.02] transition-all cursor-pointer ease-in-out items-start rounded-xl shadow-2xl bg-transparent"
+            className="max-lg:max-w-sm lg:max-w-[300px] max-h-[620px] hover:w-[100%] sm:flex-col hover:justify-center inline-flex hover:bg-gray-200 text-center hover:scale-[1.02] transition-all cursor-pointer ease-in-out items-start rounded-xl shadow-2xl bg-transparent"
           >
             <CardBody className="z-0 p-0 relative overflow-hidden flex justify-start items-start">
               <div className="flex justify-between w-full px-3 absolute top-5 z-50">
@@ -136,7 +136,7 @@ export default function App({ addToCartCallback }) {
               <Image
                 isBlurred
                 alt={product.title}
-                className="object-fit h-[350px] w-[100%] p-0 m-0 rounded-none hover:opacity-50 flex justify-center transition-all"
+                className="bg-cover h-[250px] w-[100%] p-0 m-0 rounded-none hover:opacity-50 flex justify-center transition-all"
                 src={product.thumbnail}
               />
             </CardBody>
@@ -155,12 +155,12 @@ export default function App({ addToCartCallback }) {
               <p className="text-lg px-2 rounded-lg text-center w-full">
                 Brand: <span className="">{product.brand}</span>
               </p>
-              <h4 className="font-semibold text-sm text-center mb-24 w-full">
+              <h4 className="font-semibold h-[50px] flex items-center text-sm text-center mb-24 w-full">
                 {product.description}
               </h4>
               <button
                 onClick={() => addToCart(product)}
-                className="absolute w-[92%] h-[] mt-8 bottom-[10px] shadow-inner text-white hover:bg-sky-800 transition-all font-bold bg-sky-600 px-4 py-2 items-center w-100 flex justify-center uppercase"
+                className="absolute w-[92%] h-[50px] mt-8 bottom-[10px] shadow-inner text-white hover:bg-sky-800 transition-all font-bold bg-sky-600 px-4 py-2 items-center w-100 flex justify-center uppercase"
               >
                 {cartItems.some((item) => item.id === product.id)
                   ? "Remove from Cart"

@@ -136,7 +136,7 @@ export default function App({ addToCartCallback }) {
               <Image
                 isBlurred
                 alt={product.title}
-                className="object-fit h-[200px] w-[270px] p-0 m-0 rounded-none hover:opacity-50 flex justify-center transition-all"
+                className="object-fit h-[200px] border w-[270px] p-0 m-0 rounded-none hover:opacity-50 flex justify-center transition-all"
                 src={product.thumbnail}
               />
             </CardBody>

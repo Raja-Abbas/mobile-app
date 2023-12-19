@@ -1,12 +1,14 @@
 // card.jsx
-"use client";
 import React, { useState, useEffect } from "react";
 import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
+import Modal from "./Modal";
 
 export default function App({ addToCartCallback }) {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [products, setProducts] = useState([]);
   const [cartItems, setCartItems] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
     // Fetch data from the API endpoint
@@ -23,7 +25,6 @@ export default function App({ addToCartCallback }) {
   const addToCart = (product) => {
     // Check if the product is already in the cart
     const isProductInCart = cartItems.some((item) => item.id === product.id);
-
     if (isProductInCart) {
       // If the product is in the cart, remove it
       const updatedCart = cartItems.filter((item) => item.id !== product.id);
@@ -31,6 +32,9 @@ export default function App({ addToCartCallback }) {
     } else {
       // If the product is not in the cart, add it
       setCartItems([...cartItems, product]);
+      // Open the modal when adding to cart
+      setSelectedProduct(product);
+      setModalOpen(true);
     }
   };
 
@@ -52,6 +56,11 @@ export default function App({ addToCartCallback }) {
 
   const filteredProducts = products.filter(filter);
 
+  // Function to close the modal
+  const closeModal = () => {
+    setModalOpen(false);
+    setSelectedProduct(null);
+  };
 
   return (
     <div className="flex max-xl:flex-col xl:flex-row gap-6 z-10 w-[100%] bg-gray-200">
@@ -123,6 +132,7 @@ export default function App({ addToCartCallback }) {
           <Card
             key={product.id}
             className="max-lg:max-w-[270px] lg:max-w-[270px] max-h-[620px] hover:w-[100%] sm:flex-col hover:justify-center inline-flex hover:bg-gray-200 text-center hover:scale-[1.02] transition-all cursor-pointer ease-in-out items-start rounded-xl shadow-2xl bg-transparent"
+            onClick={() => addToCart(product)}
           >
             <CardBody className="z-0 p-0 relative overflow-hidden flex justify-start items-start">
               <div className="flex justify-between w-full px-3 absolute top-5 z-50">
@@ -130,7 +140,7 @@ export default function App({ addToCartCallback }) {
                   Discount: {product.discountPercentage}%
                 </p>
                 <p className="bg-[#e35225] px-2 py-1 shadow-inner rounded-md text-white">
-                  Rate: {product.rating}
+                  Rating: {product.rating}
                 </p>
               </div>
               <Image
@@ -170,6 +180,7 @@ export default function App({ addToCartCallback }) {
           </Card>
         ))}
       </div>
+     <Modal isOpen={modalOpen} closeModal={closeModal} product={selectedProduct} />
     </div>
   );
 }

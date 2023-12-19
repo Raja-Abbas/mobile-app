@@ -9,9 +9,15 @@ export default function Main() {
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
-    // Your logic for updating the badge or sending the cart items to the server
-    console.log("Cart items updated:", cartItems);
-  }, [cartItems]);
+   fetch("https://dummyjson.com/products")
+      .then((response) => response.json())
+      .then((data) => {
+        // Assuming the array is inside a property named 'products'
+        const productsArray = data.products || [];
+        setProducts(productsArray);
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+  },  [cartItems]);
 
   const toggleSidebar = () => {
     setIsSidebarVisible(!isSidebarVisible);
@@ -39,7 +45,7 @@ export default function Main() {
       </div>
 
       {isSidebarVisible && (
-        <div className="fixed pt-16 px-5 top-[100px] bottom-0 right-0 z-50 transition-all animate-drip-expand ease-in-out max-lg:w-[100%] lg:w-[25%] h-[100vh] bg-gray-300 shadow-2xl transform">
+        <div className="fixed pt-16 px-5 top-[100px] bottom-0 right-0 z-50 transition-all animate-appearance-in ease-in-out max-lg:w-[100%] lg:w-[25%] h-[100vh] bg-gray-300 shadow-2xl transform">
           <div>
             <p className="text-3xl">Sidebar Content</p>
             <ul>

@@ -48,11 +48,11 @@ const Main = ({ cartItems, removeFromCart }) => {
       {isSidebarVisible && (
         <div className="fixed pt-20 bg-opacity-95 px-5 top-[100px] bottom-0 right-0 z-40 transition-all animate-appearance-in ease-in-out max-lg:w-[100%] lg:w-[35%] xl:w-[30%] 2xl:w-[25%] h-[100vh] bg-gray-300 shadow-2xl transform">
           <div>
-            <p className="text-2xl text-orange-500 uppercase">Checkout:</p>
+            <p className="text-2xl text-orange-500 uppercase relative">Checkout: <span className="text-[14px] absolute right-0 text-red-500">(Delivery charges 15$)</span></p>
             <ul className="flex flex-col gap-5 mt-10 overflow-x-scroll scroll-ms-2 scroll-smooth max-lg:h-[50vh] lg:h-[40vh] xl:h-[50vh]">
               {cartItems.map((cartProduct, index) => (
                 <li key={index}>
-                  <div className="flex px-3 justify-around items-center z-50 py-3 border border-orange-500 rounded-ss-lg rounded-se-lg bg-orange-500">
+                  <div className="flex px-3 justify-around items-center z-50 py-3 border ring-1 border-gray-500 rounded-ss-lg rounded-se-lg bg-gray-400">
                     <Image
                       src={cartProduct.thumbnail}
                       alt={cartProduct.title}

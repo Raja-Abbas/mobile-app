@@ -131,7 +131,7 @@ export default function App({ addToCartCallback }) {
       {filteredProducts.map((product) => (
         <Card
           key={product.id}
-          className="max-lg:max-w-[270px] lg:max-w-[270px] max-h-[620px] hover:w-[100%] sm:flex-col hover:justify-center inline-flex hover:bg-gray-200 text-center hover:scale-[1.02] transition-all cursor-pointer ease-in-out items-start rounded-xl shadow-2xl bg-transparent"
+          className="max-lg:max-w-[270px] lg:max-w-[270px] max-h-[660px] hover:w-[100%] sm:flex-col hover:justify-center inline-flex hover:bg-gray-200 text-center hover:scale-[1.02] transition-all cursor-pointer ease-in-out items-start rounded-xl shadow-2xl bg-transparent"
           onClick={() => addToCart(product)}
         >
           <CardBody className="z-0 p-0 relative overflow-hidden flex justify-start items-start">
@@ -150,7 +150,7 @@ export default function App({ addToCartCallback }) {
               src={product.thumbnail}
             />
           </CardBody>
-            <CardHeader className="pb-0 pt-8 px-4 h-[300px] text-lg bg-opacity-75 justify-center bg-white flex-col rounded-none gap-2 items-start">
+            <CardHeader className="pb-0 pt-8 px-4 h-[340px] text-lg bg-opacity-75 justify-center bg-white flex-col rounded-none gap-2 items-start">
               <p className="w-full text-xl uppercase font-bold px-2 py-2 rounded-lg text-center">
                 {product.category}
               </p>
@@ -158,19 +158,19 @@ export default function App({ addToCartCallback }) {
                 <small className="text-md px-2 uppercase rounded-lg text-center ">
                   {product.title}
                 </small>
-                <small className="text-lg inline-flex bg-sky-600 px-2 text-white rounded-lg text-center">
+                <small className="text-md inline-flex bg-sky-600 px-2 text-white rounded-lg text-center">
                   ${product.price}
                 </small>
               </div>
               <p className="text-lg px-2 rounded-lg text-center w-full">
                 Brand: <span className="">{product.brand}</span>
               </p>
-              <h4 className="font-semibold h-[80px] flex items-center text-sm text-center mb-24 w-full">
+              <h4 className="font-semibold h-[80px] flex items-center text-sm text-center w-full">
                 {product.description}
               </h4>
               <button
                 onClick={() => addToCart(product)}
-                className="absolute w-[92%] h-[50px] mt-8 bottom-[10px] shadow-inner text-white hover:bg-sky-800 transition-all font-bold bg-sky-600 px-4 py-2 items-center w-100 flex justify-center uppercase"
+                className="h-[50px] w-full shadow-inner text-white hover:bg-sky-800 transition-all font-bold bg-sky-600 px-4 py-2 items-center w-100 flex justify-center uppercase"
               >
                 {cartItems.some((item) => item.id === product.id)
                   ? "Details"

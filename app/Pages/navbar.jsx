@@ -15,7 +15,7 @@ export default function App() {
 
 
   return (
-    <Navbar isMenuDefaultOpen motionProps isBordered className="w-full h-[100px] text-[30px] text-sky-800 border-b border-gray-300">
+    <Navbar isMenuDefaultOpen motionProps isBordered className="w-full h-[70px] text-[30px] text-sky-800 border-b border-gray-300">
       <NavbarBrand className="">
         <h1 className="text-3xl">SHOPPING STORE</h1>
       </NavbarBrand>

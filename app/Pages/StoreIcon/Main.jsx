@@ -80,6 +80,7 @@ const Main = ({ cartItems, removeFromCart }) => {
               <p className="text-[16px] text-black">Delivery Charges: ${deliveryCharges.toFixed(2)}</p>
               <hr className="border border-gray-500"/>
               <p className="text-[18px] font-bold text-black">Total: ${total.toFixed(2)}</p>
+              <button className="bg-black text-center text-[24px] hover:bg-gray-800">Buy Now</button>
             </div>
           </div>
         </div>

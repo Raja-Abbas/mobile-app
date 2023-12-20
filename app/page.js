@@ -49,7 +49,7 @@ function Page() {
       <NextUIProvider>
         <style jsx>{styles}</style>
         {isLoading ? (
-          <div className="flex justify-center items-center h-screen">
+          <div className="flex justify-center items-center">
             <main>
               <svg
                 className="ip"
@@ -58,7 +58,6 @@ function Page() {
                 height="128px"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                {/* ... (your SVG content) */}
               </svg>
             </main>
           </div>

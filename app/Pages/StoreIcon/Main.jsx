@@ -17,6 +17,15 @@ const Main = ({ cartItems, removeFromCart }) => {
     setIsSidebarVisible(false);
   };
 
+  // Calculate Subtotal
+  const subtotal = cartItems.reduce((acc, item) => acc + item.price, 0);
+
+  // Fixed Delivery Charges
+  const deliveryCharges = 15;
+
+  // Calculate Total
+  const total = subtotal + deliveryCharges;
+
   const handleRemoveFromCart = (productId) => {
     // Dispatch the action to remove the item from the cart
     removeFromCart(productId);
@@ -40,7 +49,7 @@ const Main = ({ cartItems, removeFromCart }) => {
         <div className="fixed pt-20 bg-opacity-95 px-5 top-[100px] bottom-0 right-0 z-40 transition-all animate-appearance-in ease-in-out max-lg:w-[100%] lg:w-[35%] xl:w-[30%] 2xl:w-[25%] h-[100vh] bg-gray-300 shadow-2xl transform">
           <div>
             <p className="text-2xl text-orange-500 uppercase">Added Items:</p>
-            <ul className="flex flex-col gap-5 mt-10 overflow-x-scroll scroll-ms-2 scroll-smooth max-lg:h-[50vh] lg:h-[50vh] xl:h-[60vh]">
+            <ul className="flex flex-col gap-5 mt-10 overflow-x-scroll scroll-ms-2 scroll-smooth max-lg:h-[50vh] lg:h-[40vh] xl:h-[50vh]">
               {cartItems.map((cartProduct, index) => (
                 <li key={index}>
                   <div className="flex px-3 justify-around items-center z-50 py-3 border border-orange-500 rounded-ss-lg rounded-se-lg bg-orange-500">
@@ -65,6 +74,13 @@ const Main = ({ cartItems, removeFromCart }) => {
                 </li>
               ))}
             </ul>
+            <hr className="border border-gray-500"/>
+            <div className="bg-white px-4 py-2 flex flex-col gap-4">
+              <p className="text-[16px] text-black">Subtotal: ${subtotal.toFixed(2)}</p>
+              <p className="text-[16px] text-black">Delivery Charges: ${deliveryCharges.toFixed(2)}</p>
+              <hr className="border border-gray-500"/>
+              <p className="text-[18px] font-bold text-black">Total: ${total.toFixed(2)}</p>
+            </div>
           </div>
         </div>
       )}
@@ -81,3 +97,4 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
+

@@ -18,7 +18,7 @@
 
 body {
   background-color: #ffffff;
-  height: 100% !important;
+  height: 100vh !important;
   width: 100%;
   overflow-x: hidden;
   position: relative;

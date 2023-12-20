@@ -5,7 +5,7 @@ import { Badge } from "@nextui-org/badge";
 import { CartIcon } from "./CartIcon";
 import Image from "next/image";
 import { removeFromCart } from "./cartActions";
-
+import Cross from "../../../public/x-mark-24.ico"
 const Main = ({ cartItems, removeFromCart }) => {
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
 
@@ -47,7 +47,8 @@ const Main = ({ cartItems, removeFromCart }) => {
 
       {isSidebarVisible && (
         <div className="fixed pt-20 bg-opacity-95 px-5 top-[100px] bottom-0 right-0 z-40 transition-all animate-appearance-in ease-in-out max-lg:w-[100%] lg:w-[35%] xl:w-[30%] 2xl:w-[25%] h-[100vh] bg-gray-300 shadow-2xl transform">
-          <div>
+          <div className="relative">
+            <Image src={Cross} alt="" className="absolute right-0 -mt-16 h-4 w-4" onClick={closeSidebar}/>
             <p className="text-2xl text-orange-500 uppercase relative">Checkout: <span className="text-[14px] absolute right-0 text-red-500">(Delivery charges 15$)</span></p>
             <ul className="flex flex-col gap-5 mt-10 overflow-x-scroll scroll-ms-2 scroll-smooth max-lg:h-[50vh] lg:h-[40vh] xl:h-[40vh] 2xl:h-[60vh]">
               {cartItems.map((cartProduct, index) => (

@@ -135,7 +135,7 @@ export default function App({ addToCartCallback }) {
           onClick={() => addToCart(product)}
         >
           <CardBody className="z-0 p-0 relative overflow-hidden flex justify-start items-start">
-            <div className="flex justify-between w-full px-3 absolute top-5 z-50 transition-opacity ease-in-out">
+            <div className="flex justify-between w-full px-3 absolute top-2 z-50 transition-opacity ease-in-out">
               <p className="bg-gray-400 px-2 py-1 text-[12px] shadow-inner rounded-md text-white">
                 Discount: {product.discountPercentage}%
               </p>

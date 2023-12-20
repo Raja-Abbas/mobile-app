@@ -64,7 +64,7 @@ export default function App({ addToCartCallback }) {
 
   return (
     <div className="flex max-xl:flex-col xl:flex-row gap-6 z-10 w-[100%] bg-gray-200">
-      <div className="flex shadow-2xl border-r border-gray-300 bg-transparent max-lg:hidden flex-col flex-wrap pt-20 justify-start px-5 items-start gap-4 lg:w-[100%] xl:w-[300px]">
+      <div className="flex shadow-2xl border-r bg-opacity-95 border-gray-300 bg-transparent max-lg:hidden flex-col flex-wrap pt-20 justify-start px-5 items-start gap-4 lg:w-[100%] xl:w-[300px]">
         <div className="xl:fixed overflow-x-scroll">
           <p className="text-2xl text-orange-500 uppercase">Category:</p>
           <div className="flex gap-4 lg:flex-wrap xl:flex-col mt-10">

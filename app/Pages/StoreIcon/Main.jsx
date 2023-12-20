@@ -1,12 +1,12 @@
 // Main.jsx
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Badge } from "@nextui-org/badge";
 import { CartIcon } from "./CartIcon";
 import Image from "next/image";
-import { addToCart } from "./cartActions";
+import { removeFromCart } from "./cartActions";
 
-const Main = ({ addToCart, cartItems }) => {
+const Main = ({ cartItems, removeFromCart }) => {
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
 
   const toggleSidebar = () => {
@@ -15,6 +15,11 @@ const Main = ({ addToCart, cartItems }) => {
 
   const closeSidebar = () => {
     setIsSidebarVisible(false);
+  };
+
+  const handleRemoveFromCart = (productId) => {
+    // Dispatch the action to remove the item from the cart
+    removeFromCart(productId);
   };
 
   return (
@@ -32,24 +37,30 @@ const Main = ({ addToCart, cartItems }) => {
       </div>
 
       {isSidebarVisible && (
-        <div className="fixed pt-16 px-5 top-[100px] bottom-0 right-0 z-50 transition-all animate-appearance-in ease-in-out max-lg:w-[100%] lg:w-[25%] h-[100vh] bg-gray-300 shadow-2xl transform">
+        <div className="fixed pt-20 bg-opacity-95 px-5 top-[100px] bottom-0 right-0 z-40 transition-all animate-appearance-in ease-in-out max-lg:w-[100%] lg:w-[35%] xl:w-[30%] 2xl:w-[25%] h-[100vh] bg-gray-300 shadow-2xl transform">
           <div>
-            <p className="text-xl text-orange-500">Added Items</p>
-            <ul>
+            <p className="text-2xl text-orange-500 uppercase">Added Items:</p>
+            <ul className="flex flex-col gap-5 mt-10 overflow-x-scroll scroll-ms-2 scroll-smooth max-lg:h-[50vh] lg:h-[50vh] xl:h-[60vh]">
               {cartItems.map((cartProduct, index) => (
                 <li key={index}>
-                  <div className="flex items-center z-50">
+                  <div className="flex px-3 justify-around items-center z-50 py-3 border border-orange-500 rounded-ss-lg rounded-se-lg bg-orange-500">
                     <Image
                       src={cartProduct.thumbnail}
                       alt={cartProduct.title}
-                      width={100}
-                      height={100}
-                      className="h-8 w-8 object-cover mr-2"
+                      width={150}
+                      height={150}
+                      className="object-cover mr-2"
                     />
-                    <div>
-                      <p>{cartProduct.title}</p>
-                      <p>${cartProduct.price}</p>
+                    <div className="flex flex-col w-full text-center justify-center">
+                      <p className="text-sm uppercase">{cartProduct.category} : {cartProduct.title}</p>
+                      <p className="text-[18px]">Price: ${cartProduct.price}</p>
                     </div>
+                  </div>
+                  <div
+                    className="bg-black text-white text-center text-[18px] rounded-es-lg rounded-ee-lg py-1 transition-all uppercase hover:bg-gray-800 hover:text-gray-200"
+                    onClick={() => handleRemoveFromCart(cartProduct.id)}
+                  >
+                    Remove From Cart
                   </div>
                 </li>
               ))}
@@ -66,7 +77,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  addToCart,
+  removeFromCart,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

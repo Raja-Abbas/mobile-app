@@ -45,7 +45,7 @@ export default function App() {
         <NavbarItem className="hidden lg:flex">
           <Link href="#">Login</Link>
         </NavbarItem>
-        <NavbarItem>
+        <NavbarItem className="max-sm:hidden">
           <Button as={Link} color="warning" href="#" variant="flat">
             Sign Up
           </Button>

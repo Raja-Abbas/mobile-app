@@ -15,7 +15,7 @@ const Modal = ({ isOpen, closeModal, product }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed border border-black top-1/2 bg-white rounded-lg shadow-3xl  left-1/2 transform z-50 animate-drip-expand -translate-x-1/2 -translate-y-1/2 h-fit w-fit flex max-lg:flex-col items-center px-6">
+    <div className="fixed border border-black top-1/2 bg-white rounded-lg shadow-3xl  left-1/2 transform z-[100] animate-drip-expand -translate-x-1/2 -translate-y-1/2 h-fit w-fit flex max-lg:flex-col items-center px-6">
       <div className="p-8 rounded-lg flex flex-col w-[300px] justify-between items-center">
         <h2 className="text-2xl font-bold mb-4">{product.title}</h2>
         <p className="w-full text-xl uppercase font-bold px-2 py-2 rounded-lg text-center">

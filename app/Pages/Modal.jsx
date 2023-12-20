@@ -44,7 +44,7 @@ const Modal = ({ isOpen, closeModal, product }) => {
           </button>
           <button
             onClick={closeModal}
-            className="text-blue-500 w-[100px] transition-all rounded-lg border-none hover:bg-gray-800 bg-black h-[40px] flex justify-center items-center"
+            className="text-white w-[100px] transition-all rounded-lg border-none hover:bg-gray-800 bg-black h-[40px] flex justify-center items-center"
           >
             Close
           </button>

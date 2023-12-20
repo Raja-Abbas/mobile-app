@@ -135,7 +135,7 @@ export default function App({ addToCartCallback }) {
           onClick={() => addToCart(product)}
         >
           <CardBody className="z-0 p-0 relative overflow-hidden flex justify-start items-start">
-            <div className="flex justify-between w-full px-3 absolute top-5 z-50 opacity-0 hover:opacity-100 transition-opacity ease-in-out">
+            <div className="flex justify-between w-full px-3 absolute top-5 z-50 transition-opacity ease-in-out">
               <p className="bg-gray-400 px-2 py-1 shadow-inner rounded-md text-white">
                 Discount: {product.discountPercentage}%
               </p>
@@ -173,8 +173,8 @@ export default function App({ addToCartCallback }) {
                 className="absolute w-[92%] h-[50px] mt-8 bottom-[10px] shadow-inner text-white hover:bg-sky-800 transition-all font-bold bg-sky-600 px-4 py-2 items-center w-100 flex justify-center uppercase"
               >
                 {cartItems.some((item) => item.id === product.id)
-                  ? "Remove from Cart"
-                  : "Add to Cart"}
+                  ? "Details"
+                  : "Details"}
               </button>
             </CardHeader>
           </Card>

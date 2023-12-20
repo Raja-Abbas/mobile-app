@@ -5,7 +5,7 @@ import Data from "./Pages/data";
 import Navbar from "./Pages/navbar";
 import { NextUIProvider } from "@nextui-org/system";
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
 import rootReducer from './Pages/StoreIcon/rootReducer';
 
 // Add custom styles to your component
@@ -28,7 +28,10 @@ const styles = `
   }
 `;
 
-const store = createStore(rootReducer);
+// Use configureStore from @reduxjs/toolkit
+const store = configureStore({
+  reducer: rootReducer,
+});
 
 function Page() {
   const [isLoading, setIsLoading] = useState(true);

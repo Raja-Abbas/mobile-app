@@ -5,12 +5,12 @@ const initialState = {
 
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "ADD_TO_CART":
+    case 'ADD_TO_CART':
       return {
         ...state,
         cartItems: [...state.cartItems, action.payload],
       };
-    // Handle other cases if needed
+    // Handle other actions if needed
     default:
       return state;
   }

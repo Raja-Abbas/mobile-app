@@ -1,6 +1,6 @@
 // rootReducer.js
-import { combineReducers } from "redux";
-import cartReducer from "./cartReducer"; // Adjust the path based on your project structure
+import { combineReducers } from 'redux';
+import cartReducer from './cartReducer';
 
 const rootReducer = combineReducers({
   cart: cartReducer,

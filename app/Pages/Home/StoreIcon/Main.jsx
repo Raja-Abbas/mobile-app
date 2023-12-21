@@ -5,7 +5,7 @@ import { Badge } from "@nextui-org/badge";
 import { CartIcon } from "./CartIcon";
 import Image from "next/image";
 import { removeFromCart } from "./cartActions";
-import Cross from "../../../public/x-mark-24.ico"
+import Cross from "../../../../public/x-mark-24.ico"
 const Main = ({ cartItems, removeFromCart }) => {
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
 

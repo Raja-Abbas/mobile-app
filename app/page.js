@@ -1,12 +1,12 @@
 "use client";
 import "tailwindcss/tailwind.css";
 import React, { useState, useEffect } from "react";
-import Data from "./Pages/data";
-import Navbar from "./Pages/navbar";
+import Data from "./Pages/Home/data";
+import Navbar from "./Pages/Home/navbar";
 import { NextUIProvider } from "@nextui-org/system";
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
-import rootReducer from './Pages/StoreIcon/rootReducer';
+import rootReducer from './Pages/Home/StoreIcon/rootReducer';
 
 // Add custom styles to your component
 const styles = `

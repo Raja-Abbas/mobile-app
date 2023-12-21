@@ -1,9 +1,14 @@
+
 // card.jsx
+"use client";
 import React, { useState, useEffect } from "react";
 import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
 import Modal from "./Modal";
+import { useRouter } from "next/navigation";
+import Link from 'next/link';
 
 export default function App({ addToCartCallback }) {
+  const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [products, setProducts] = useState([]);
   const [cartItems, setCartItems] = useState([]);
@@ -11,11 +16,9 @@ export default function App({ addToCartCallback }) {
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
-    // Fetch data from the API endpoint
     fetch("https://dummyjson.com/products")
       .then((response) => response.json())
       .then((data) => {
-        // Assuming the array is inside a property named 'products'
         const productsArray = data.products || [];
         setProducts(productsArray);
       })
@@ -23,40 +26,37 @@ export default function App({ addToCartCallback }) {
   }, []);
 
   const addToCart = (product) => {
-    // Check if the product is already in the cart
     const isProductInCart = cartItems.some((item) => item.id === product.id);
     if (isProductInCart) {
-      // If the product is in the cart, remove it
       const updatedCart = cartItems.filter((item) => item.id !== product.id);
       setCartItems(updatedCart);
     } else {
-      // If the product is not in the cart, add it
       setCartItems([...cartItems, product]);
-      // Open the modal when adding to cart
       setSelectedProduct(product);
       setModalOpen(true);
     }
+  };
+
+  const handleReadMoreClick = (product) => {
+    setSelectedProduct(product);
   };
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
   };
 
-  // Filter items with the selected category and limit to 14 items
   const filter = (product) =>
-    (selectedCategory.toLowerCase() === "all" 
-    ||
+    (selectedCategory.toLowerCase() === "all" ||
       product.category.toLowerCase() === selectedCategory.toLowerCase()) &&
     (product.category.toLowerCase() === "smartphones" ||
       product.category.toLowerCase() === "laptops" ||
       product.category.toLowerCase() === "fragrances" ||
-      product.category.toLowerCase() === "skincare"  ||
+      product.category.toLowerCase() === "skincare" ||
       product.category.toLowerCase() === "groceries" ||
-       product.category.toLowerCase() === "home-decoration");
+      product.category.toLowerCase() === "home-decoration");
 
   const filteredProducts = products.filter(filter);
 
-  // Function to close the modal
   const closeModal = () => {
     setModalOpen(false);
     setSelectedProduct(null);
@@ -118,7 +118,8 @@ export default function App({ addToCartCallback }) {
             </p>
             <p
               className={`px-3 py-1 bg-gray-300 hover:bg-gray-500 uppercase text-lg rounded-lg cursor-pointer transition-all duration-300 ${
-                selectedCategory === "home-decoration" && "bg-gray-500 text-white"
+                selectedCategory === "home-decoration" &&
+                "bg-gray-500 text-white"
               }`}
               onClick={() => handleCategoryClick("home-decoration")}
             >
@@ -127,29 +128,29 @@ export default function App({ addToCartCallback }) {
           </div>
         </div>
       </div>
-     <div className="flex flex-wrap mt-6 mb-6 justify-center items-start gap-10 w-[100%]">
-      {filteredProducts.map((product) => (
-        <Card
-          key={product.id}
-          className="max-lg:max-w-[270px] lg:max-w-[270px] max-h-[550px] hover:w-[100%] sm:flex-col hover:justify-center inline-flex hover:bg-gray-200 text-center hover:scale-[1.02] transition-all cursor-pointer ease-in-out items-start rounded-xl shadow-2xl bg-transparent"
-          onClick={() => addToCart(product)}
-        >
-          <CardBody className="z-0 p-0 relative overflow-hidden flex justify-start items-start">
-            <div className="flex justify-between w-full px-3 absolute top-2 z-50 transition-opacity ease-in-out">
-              <p className="bg-gray-400 px-2 py-1 text-[12px] shadow-inner rounded-md text-white">
-                Discount: {product.discountPercentage}%
-              </p>
-              <p className="bg-[#e35225] px-2 py-1 text-[12px] shadow-inner rounded-md text-white">
-                Rating: {product.rating}
-              </p>
-            </div>
-            <Image
-              isBlurred
-              alt={product.title}
-              className="object-fit h-[200px] border w-[270px] p-0 m-0 rounded-none hover:opacity-50 flex justify-center transition-all"
-              src={product.thumbnail}
-            />
-          </CardBody>
+      <div className="flex flex-wrap mt-6 mb-6 justify-center items-start gap-10 w-[100%]">
+        {filteredProducts.map((product) => (
+          <Card
+            key={product.id}
+            className="max-lg:max-w-[270px] lg:max-w-[270px] max-h-[550px] hover:w-[100%] sm:flex-col hover:justify-center inline-flex hover:bg-gray-200 text-center hover:scale-[1.02] transition-all cursor-pointer ease-in-out items-start rounded-xl shadow-2xl bg-transparent"
+            onClick={() => addToCart(product)}
+          >
+            <CardBody className="z-0 p-0 relative overflow-hidden flex justify-start items-start">
+              <div className="flex justify-between w-full px-3 absolute top-2 z-50 transition-opacity ease-in-out">
+                <p className="bg-gray-400 px-2 py-1 text-[12px] shadow-inner rounded-md text-white">
+                  Discount: {product.discountPercentage}%
+                </p>
+                <p className="bg-[#e35225] px-2 py-1 text-[12px] shadow-inner rounded-md text-white">
+                  Rating: {product.rating}
+                </p>
+              </div>
+              <Image
+                isBlurred
+                alt={product.title}
+                className="object-fit h-[200px] border w-[270px] p-0 m-0 rounded-none hover:opacity-50 flex justify-center transition-all"
+                src={product.thumbnail}
+              />
+            </CardBody>
             <CardHeader className="pb-0 px-4 h-[340px] text-lg bg-opacity-75 justify-center bg-white flex-col rounded-none gap-2 items-start">
               <p className="w-full text-xl uppercase font-bold px-2 py-2 rounded-lg text-center">
                 {product.category}
@@ -169,18 +170,28 @@ export default function App({ addToCartCallback }) {
                 {product.description}
               </h4>
               <button
-                onClick={() => addToCart(product)}
+                onClick={() => {
+                  addToCart(product);
+                }}
                 className="h-[50px] mt-4 w-full shadow-inner text-white hover:bg-sky-800 transition-all font-bold bg-sky-600 px-4 py-2 items-center place-content-end content-end w-100 flex justify-center uppercase"
               >
                 {cartItems.some((item) => item.id === product.id)
                   ? "Details"
                   : "Details"}
               </button>
+              <Link href='/CardComponent'>
+                <button className='text-black'>Read More</button>
+              </Link>
             </CardHeader>
           </Card>
         ))}
       </div>
-     <Modal isOpen={modalOpen} closeModal={closeModal} product={selectedProduct} addToCartCallback={addToCart}/>
+      <Modal
+        isOpen={modalOpen}
+        closeModal={closeModal}
+        product={selectedProduct}
+        addToCartCallback={addToCart}
+      />
     </div>
   );
 }

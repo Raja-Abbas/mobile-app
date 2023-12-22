@@ -101,3 +101,10 @@ main {
 		stroke-dashoffset: -358;
 	}
 }
+
+.bg-cardcomponent{
+	background: url(../public/rm218-bb-05.jpg);
+	background-repeat: no-repeat;
+	width: 100%;
+	background-size: cover;
+}

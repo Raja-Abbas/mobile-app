@@ -1,6 +1,6 @@
 // page.jsx
 'use client';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Home from '../../public/icons8-home-50.svg';
 import { useRouter } from "next/navigation";
@@ -8,15 +8,38 @@ import  Link from 'next/link'
 
 function Page() {
   const selectedProduct = JSON.parse(localStorage.getItem('selectedProduct'));
-
+  const [cartItems, setCartItems] = useState([]);
+    const [setSelectedProduct] = useState(null);
+ 
   return (
-    <div className='bg-gray-400 h-[100vh] flex justify-center items-center'>
-      <div className='bg-white w-[60%] h-[60%] px-10 py-10 text-[20px] inline-flex flex-col gap-10 uppercase text-black'>
-        <p>Title: {selectedProduct?.title}</p>
-        <p>Category: {selectedProduct?.category}</p>
-        <p>Price: {selectedProduct?.price}</p>
+    <div className='bg-cardcomponent h-[100vh] flex justify-center items-center'>
+      <div className='bg-slate-800 w-[83.4%] h-[76%] px-4 flex items-center -mt-[10px] shadow-inner justify-center gap-10 2xl:gap-20 uppercase text-white text-[14px]'>
+        <Image
+                isBlurred
+                alt={selectedProduct?.title}
+                width={100}
+                height={100}
+                className="object-fit hover:scale-105 cursor-pointer ring ring-slate-500 h-[60%] w-[30%] p-0 m-0 items-center rounded-none flex justify-center transition-all"
+                src={selectedProduct?.thumbnail}
+              />
+              <div className='flex flex-col gap-8 xl:text-[20px] lg:w-[40%] bg-transparent'>
+        <p>Title: <span className='text-[#00FFFF] mt-4'>{selectedProduct?.title}</span></p>
+        <p>Category: <span className='text-[#00FFFF] mt-4'>{selectedProduct?.category}</span></p>
+        <p>Price: <span className='text-[#00FFFF] mt-4'>${selectedProduct?.price}</span></p>
+        <p>Description:<br/> <span className='text-[#00FFFF] mt-4'>{selectedProduct?.description}</span></p>
+        <button
+                onClick={() => {
+                  addToCart(product);
+                }}
+                className="h-[50px] text-[14px] mt-2 w-[200px] shadow-inner text-black hover:bg-sky-800 transition-all font-bold bg-[#00FFFF] px-4 py-2 items-center place-content-end content-end w-100 flex justify-center uppercase"
+              >
+                {cartItems.some((item) => item.id === product.id)
+                  ? "Add Item"
+                  : "Add Item"}
+              </button>
+        </div>
         <Link href='/'>
-          <Image src={Home} alt='' className='w-8 absolute right-0 top-0 mr-4 mt-4'/>
+          <Image src={Home} alt='' className='w-16 hover:bg-white transition-all ease-in-out rounded-full px-4 py-4 bg-[#00FFFF] absolute right-0 top-0 mr-6 mt-6'/>
         </Link>
       </div>
     </div>

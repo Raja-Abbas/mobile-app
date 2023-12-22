@@ -21,26 +21,6 @@ export default function App() {
       </NavbarBrand>
       <NavbarContent justify="end" className=" flex justify-end">
          <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarItem>
-          <Dropdown>
-      <DropdownTrigger className="">
-        <Button 
-          variant="bordered" 
-        >
-          Categories
-        </Button>
-      </DropdownTrigger>
-      <DropdownMenu
-      aria-label="Action event example"
-      onAction={(key) => handleFilterChange(key)}
-      className="bg-black text-white rounded-md"
-    >
-      <DropdownItem key="all">ALL</DropdownItem>
-      <DropdownItem key="laptops">LAPTOPS</DropdownItem>
-      <DropdownItem key="smartphones">SMARTPHONES</DropdownItem>
-    </DropdownMenu>
-    </Dropdown>
-        </NavbarItem>
       </NavbarContent>
         <NavbarItem className="hidden lg:flex">
           <Link href="#">Login</Link>

@@ -53,7 +53,7 @@ const Main = ({ cartItems, removeFromCart }) => {
             <ul className="flex flex-col gap-5 mt-10 overflow-x-scroll scroll-ms-2 scroll-smooth max-lg:h-[50vh] lg:h-[40vh] xl:h-[40vh] 2xl:h-[60vh]">
               {cartItems.map((cartProduct, index) => (
                 <li key={index}>
-                  <div className="flex px-3 justify-around items-center z-50 py-3 border ring-1 border-gray-500 rounded-ss-lg rounded-se-lg bg-gray-400">
+                  <div className="flex px-3 justify-around items-center z-50 py-3 border ring-1 border-gray-500 rounded-ss-lg rounded-se-lg bg-slate-800">
                     <Image
                       src={cartProduct.thumbnail}
                       alt={cartProduct.title}
@@ -76,12 +76,12 @@ const Main = ({ cartItems, removeFromCart }) => {
               ))}
             </ul>
             <hr className="border border-gray-500"/>
-            <div className="bg-white px-4 py-2 flex flex-col gap-4">
-              <p className="text-[16px] text-black">Subtotal: ${subtotal.toFixed(2)}</p>
-              <p className="text-[16px] text-black">Delivery Charges: ${deliveryCharges.toFixed(2)}</p>
+            <div className="bg-slate-800 text-white px-4 py-2 flex flex-col gap-4">
+              <p className="text-[16px]">Subtotal: ${subtotal.toFixed(2)}</p>
+              <p className="text-[16px]">Delivery Charges: ${deliveryCharges.toFixed(2)}</p>
               <hr className="border border-gray-500"/>
-              <p className="text-[18px] font-bold text-black">Total: ${total.toFixed(2)}</p>
-              <button className="bg-black text-center text-[24px] hover:bg-gray-800">Buy Now</button>
+              <p className="text-[18px] font-bold">Total: ${total.toFixed(2)}</p>
+              <button className="bg-black text-center text-[24px] hover:bg-opacity-50">Buy Now</button>
             </div>
           </div>
         </div>

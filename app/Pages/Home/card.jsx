@@ -182,7 +182,7 @@ export default function App({ addToCartCallback }) {
                   : "Add Item"}
               </button>
               <Link href='/CardComponent' className="w-[50%]" onClick={() => handleReadMoreClick(product)}>
-            <button className='h-[50px] text-[14px] mt-2 w-full shadow-inner text-white hover:bg-sky-800 transition-all font-bold bg-sky-600 px-4 py-2 items-center place-content-end content-end w-100 flex justify-center uppercase'>Read More</button>
+            <button className='h-[50px] text-[14px] mt-2 w-full shadow-inner text-white transition-all font-bold bg-[#e35225] hover:bg-[#e06540] px-4 py-2 items-center place-content-end content-end w-100 flex justify-center uppercase'>Read More</button>
           </Link>
           </div>
             </CardHeader>

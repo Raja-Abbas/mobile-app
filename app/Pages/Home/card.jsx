@@ -37,8 +37,9 @@ export default function App({ addToCartCallback }) {
     }
   };
 
-  const handleReadMoreClick = (product) => {
-    setSelectedProduct(product);
+ const handleReadMoreClick = (product) => {
+    localStorage.setItem('selectedProduct', JSON.stringify(product));
+    router.push('/CardComponent');
   };
 
   const handleCategoryClick = (category) => {
@@ -169,19 +170,21 @@ export default function App({ addToCartCallback }) {
               <h4 className="font-semibold h-[80px] flex items-center text-sm text-center w-full">
                 {product.description}
               </h4>
+              <div className="flex gap-2 w-[100%]">
               <button
                 onClick={() => {
                   addToCart(product);
                 }}
-                className="h-[50px] mt-4 w-full shadow-inner text-white hover:bg-sky-800 transition-all font-bold bg-sky-600 px-4 py-2 items-center place-content-end content-end w-100 flex justify-center uppercase"
+                className="h-[50px] text-[14px] mt-2 w-[50%] shadow-inner text-white hover:bg-sky-800 transition-all font-bold bg-sky-600 px-4 py-2 items-center place-content-end content-end w-100 flex justify-center uppercase"
               >
                 {cartItems.some((item) => item.id === product.id)
-                  ? "Details"
-                  : "Details"}
+                  ? "Add Item"
+                  : "Add Item"}
               </button>
-              <Link href='/CardComponent'>
-                <button className='text-black'>Read More</button>
-              </Link>
+              <Link href='/CardComponent' className="w-[50%]" onClick={() => handleReadMoreClick(product)}>
+            <button className='h-[50px] text-[14px] mt-2 w-full shadow-inner text-white hover:bg-sky-800 transition-all font-bold bg-sky-600 px-4 py-2 items-center place-content-end content-end w-100 flex justify-center uppercase'>Read More</button>
+          </Link>
+          </div>
             </CardHeader>
           </Card>
         ))}

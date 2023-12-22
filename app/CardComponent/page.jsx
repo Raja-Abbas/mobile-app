@@ -33,7 +33,7 @@ function Page() {
 
   return (
     <div className='bg-cardcomponent h-[100vh] flex justify-center items-center'>
-      <div className='bg-slate-800 w-[83.4%] h-[76%] px-4 flex items-center -mt-[10px] shadow-inner justify-center gap-10 2xl:gap-20 uppercase text-white text-[14px]'>
+      <div className='bg-slate-800 w-[90vw] h-[90vh] px-4 flex items-center -mt-[10px] shadow-inner justify-center gap-10 2xl:gap-20 uppercase text-white text-[14px]'>
         <Image
           isBlurred
           alt={selectedProduct?.title}
